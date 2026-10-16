@@ -20,7 +20,7 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
   --name vibe-research
 ```
 
-安装后在下一条消息中调用。已有同名目录不会直接覆盖，更新前先备份原安装；正在进行的项目和冻结快照保留。统一使用 `$vibe-research` 调用；原 Auto Paper 仓库和兼容入口已移除。
+安装后在下一条消息中调用。已有同名目录不会直接覆盖，更新前先备份原安装；正在进行的项目和冻结快照保留。统一使用 `$vibe-research` 调用；不再提供旧名称兼容调用。
 
 结构化自动执行需要 requirements.txt 中的 jsonschema，数值分析另需对应库。部分科研方法与 Word、PDF 制作依赖当前环境实际可用的技能与工具；安装入口不等于这些能力都已接通。
 
