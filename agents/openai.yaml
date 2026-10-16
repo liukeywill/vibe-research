@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Research 科研工作流"
+  short_description: "从研究方向分阶段推进科研，保留人工核查、证据追踪和进度记录"
+  default_prompt: "使用 $vibe-research，从我的研究方向开始，按阶段推进并保留每阶段的人工核查。"
