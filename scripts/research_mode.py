@@ -9,10 +9,10 @@ class ModeError(ValueError):
     pass
 
 
-def select_mode(project=None, requested=None, legacy_auto=False):
+def select_mode(project=None, requested=None):
     if requested not in (None, 'manual', 'automatic'):
         raise ModeError('Unknown requested mode')
-    default = requested or ('automatic' if legacy_auto else 'manual')
+    default = requested or 'manual'
     if project is None:
         return {'mode': default, 'action': 'new_project', 'reason': 'explicit_request' if requested else 'entrypoint_default'}
     root = Path(project).expanduser().resolve()
@@ -52,10 +52,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--project', type=Path)
     parser.add_argument('--requested', choices=['manual', 'automatic'])
-    parser.add_argument('--legacy-auto', action='store_true')
     args = parser.parse_args()
     try:
-        result = select_mode(args.project, args.requested, args.legacy_auto)
+        result = select_mode(args.project, args.requested)
     except ModeError as error:
         parser.exit(1, str(error) + '\n')
     print(json.dumps(result, ensure_ascii=False, indent=2))

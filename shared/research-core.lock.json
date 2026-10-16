@@ -1,13 +1,13 @@
 {
   "name": "research-core",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "source": "https://github.com/liukeywill/research-core",
-  "source_commit": "a2954ad18519be425dec970e006bc8de5e83b614",
+  "source_commit": "b569a29ed51a5c5ee1cc2ebb2552d033879ed30d",
   "files": {
-    "module.json": "17dd781cad19822b34cef13ca62d3f9f269627b709c9d0d859888d64034271c9",
-    "references/claims-review.md": "1017c3bd9696b44db48808f34482e25ed75b31b75766d255cd7e88015f1eb664",
+    "module.json": "fbdb480ab11c2486860309050e1edaa62e5965ceb210ba9cae64cfbd1ad7e48a",
+    "references/claims-review.md": "324bddf2634420d1abdcfe5816b23d53f90431827ac8a667e128dbbc600ad50d",
     "references/evidence.md": "d931bee1e8585ec5b3c45d8902397cf68a7f9a2695c150ad303ed63f0e540b87",
     "references/question-design.md": "72361b65f80a770b04f99e37c8e1cb521ec7f5f613760fceb688badcdc14fc1f",
-    "references/traceability.md": "72b5feda4cf9a5d35f763ab7fe2a5b0833976b8a69c8139fab7826e8c37fa482"
+    "references/traceability.md": "fa3dbfaf95a52433948f75d4699c8498e27b96960c34a5a6d312b5a27de53c45"
   }
 }

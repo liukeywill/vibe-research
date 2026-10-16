@@ -1,4 +1,4 @@
-# 自动成稿模式（原 Auto Paper）
+# 自动成稿模式
 
 本指南中的 SKILL 指统一 Vibe Research 技能根目录，不是 references 目录，也不是旧 auto-paper 安装目录；已有项目优先使用其 runtime-snapshot 内冻结脚本。
 

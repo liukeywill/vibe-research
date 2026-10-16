@@ -1,13 +1,13 @@
 # Vibe Research · 统一科研工作流
 
-从研究方向推进到文献、设计、验证、分析、论文写作和评审。原 Vibe Research 与 Auto Paper 已整合到本技能，**一个入口，两种模式**：默认逐阶段人工核查，也可明确选择连续自动成稿。
+从研究方向推进到文献、设计、验证、分析、论文写作和评审。**一个入口，两种模式**：默认逐阶段人工核查，也可明确选择连续自动成稿。
 
 | 模式 | 适合的任务 | 推进方式 |
 |---|---|---|
 | 人工核查 | 需要自己判断选题、方法、证据和结论 | 每阶段交付成果与核查清单，等待研究者决定 |
 | 自动成稿 | 主题已明确，希望连续完成研究与论文材料包 | 在真实证据和工具允许范围内连续执行，必要条件缺失时如实停止 |
 
-研究规范与工具在本仓库统一维护，不需要再安装 Auto Paper。公众号、报道、日常文书和普通表达编辑使用 [Vibe Writing](https://github.com/liukeywill/vibe-writing)。
+研究规范与工具在本仓库统一维护，只需安装本技能。公众号、报道、日常文书和普通表达编辑使用 [Vibe Writing](https://github.com/liukeywill/vibe-writing)。
 
 ## 安装
 
@@ -20,7 +20,7 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
   --name vibe-research
 ```
 
-安装后在下一条消息中调用。已有同名目录不会直接覆盖，更新前先备份原安装；正在进行的项目和冻结快照保留。新用户只安装本技能即可，旧 `$auto-paper` 名称通过兼容入口调用这里的自动模式。
+安装后在下一条消息中调用。已有同名目录不会直接覆盖，更新前先备份原安装；正在进行的项目和冻结快照保留。统一使用 `$vibe-research` 调用；原 Auto Paper 仓库和兼容入口已移除。
 
 结构化自动执行需要 requirements.txt 中的 jsonschema，数值分析另需对应库。部分科研方法与 Word、PDF 制作依赖当前环境实际可用的技能与工具；安装入口不等于这些能力都已接通。
 
@@ -72,7 +72,7 @@ $vibe-research
 
 没有真实数据且未限定类型时，可明确选择综述或理论论文；指定实证论文却缺不可替代数据时，保存已完成部分并标记未完成，不暗改类型、不编结果。内置数值分析适配器为 OLS＋HC3，其他方法按实际条件扩展。默认不逐阶段等批准，用户指定的人工交接与实际工具授权仍保留。
 
-[完整自动模式（原 Auto Paper）](references/automatic-mode.md) · [自动成稿参数与终点](references/autonomous-manuscript.md)
+[完整自动模式](references/automatic-mode.md) · [自动成稿参数与终点](references/autonomous-manuscript.md)
 
 ## 旧项目、恢复与模式调整
 

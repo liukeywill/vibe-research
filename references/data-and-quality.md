@@ -7,7 +7,7 @@
 数据清洗前必须有 `data/dataset-spec.json`，通过 `dataset-spec.schema.json` 校验；明确原始 CSV 的相对路径、SHA-256、来源、许可、观察单位、字段类型和含义、缺失标记、重复政策。`delimiter` 缺省为逗号，可设为分号。`drop_exact_duplicates=false` 保留完全相同的记录并报告，避免把不同但同值的受访者误删；`true` 仅按完整 CSV 行去重，不是按入模列去重。原始 CSV 不变。
 
 ```bash
-PYTHON /absolute/path/auto-paper/scripts/analyze_data.py \
+PYTHON /absolute/path/vibe-research/scripts/analyze_data.py \
   --project PROJECT --spec data/dataset-spec.json \
   --outcome SCORE --predictors predictor1 predictor2
 ```

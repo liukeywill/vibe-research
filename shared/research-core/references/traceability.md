@@ -6,7 +6,7 @@
 
 区分未开始、执行中、计划但未执行、已执行、未核验及实际确认。人工确认必须来自用户原话与对应版本；助手自检、自动继续或工具返回成功不能替代人工决定。
 
-本模块不拥有项目状态机。Vibe Research 的人工核查模式使用 project.md／state.json／decisions.md；自动成稿模式沿用原 Auto Paper 的 pipeline、schema、哈希和冻结引擎。两者项目不能通过改文件名或复制 accepted 状态直接互转。
+本模块不拥有项目状态机。Vibe Research 的人工核查模式使用 project.md／state.json／decisions.md；自动成稿模式使用 pipeline、schema、哈希和冻结引擎。两者项目不能通过改文件名或复制 accepted 状态直接互转。
 
 ## 恢复与变更
 

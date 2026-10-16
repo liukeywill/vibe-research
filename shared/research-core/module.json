@@ -1,10 +1,10 @@
 {
   "name": "research-core",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "files": {
-    "references/claims-review.md": "1017c3bd9696b44db48808f34482e25ed75b31b75766d255cd7e88015f1eb664",
+    "references/claims-review.md": "324bddf2634420d1abdcfe5816b23d53f90431827ac8a667e128dbbc600ad50d",
     "references/evidence.md": "d931bee1e8585ec5b3c45d8902397cf68a7f9a2695c150ad303ed63f0e540b87",
     "references/question-design.md": "72361b65f80a770b04f99e37c8e1cb521ec7f5f613760fceb688badcdc14fc1f",
-    "references/traceability.md": "72b5feda4cf9a5d35f763ab7fe2a5b0833976b8a69c8139fab7826e8c37fa482"
+    "references/traceability.md": "fa3dbfaf95a52433948f75d4699c8498e27b96960c34a5a6d312b5a27de53c45"
   }
 }

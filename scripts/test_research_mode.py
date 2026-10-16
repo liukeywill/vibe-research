@@ -18,18 +18,19 @@ class ResearchModeTests(unittest.TestCase):
     def test_default_and_explicit_modes(self):
         self.assertEqual(select_mode()['mode'], 'manual')
         self.assertEqual(select_mode(requested='automatic')['mode'], 'automatic')
-        self.assertEqual(select_mode(legacy_auto=True)['mode'], 'automatic')
-        self.assertEqual(select_mode(requested='manual', legacy_auto=True)['mode'], 'manual')
+        self.assertEqual(select_mode(requested='manual')['mode'], 'manual')
 
     def test_nonexistent_project_is_not_created(self):
         path = self.root / 'not-created'
         self.assertEqual(select_mode(path)['action'], 'new_project')
         self.assertFalse(path.exists())
 
-    def test_legacy_auto_name_does_not_override_manual_project(self):
+    def test_explicit_auto_request_does_not_override_manual_project(self):
         self.state('state.json', {'current_stage': 1, 'stages': {}})
         before = (self.root / 'state.json').read_bytes()
-        self.assertEqual(select_mode(self.root, legacy_auto=True)['mode'], 'manual')
+        result = select_mode(self.root, requested='automatic')
+        self.assertEqual(result['mode'], 'manual')
+        self.assertEqual(result['action'], 'needs_migration')
         self.assertEqual(before, (self.root / 'state.json').read_bytes())
 
     def test_explicit_switch_preserves_state_and_requires_migration(self):

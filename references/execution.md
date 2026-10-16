@@ -4,7 +4,7 @@
 
 ```bash
 WORKBENCH_PYTHON='python3'
-WORKBENCH_SKILL='/absolute/path/auto-paper'
+WORKBENCH_SKILL='/absolute/path/vibe-research'
 WORKBENCH_PROJECT='/absolute/path/research-project'
 ```
 
