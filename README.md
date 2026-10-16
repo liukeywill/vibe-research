@@ -1,6 +1,16 @@
-# Vibe Research 科研工作流
+# Vibe Research · 人工核查科研协作
 
 输入研究方向，从选题到最终核验分阶段推进科研。AI 协助探索、检索、设计、执行与写作，研究者保留问题选择、方法判断、证据核查和结论取舍。
+
+## 定位与选择
+
+| 你的任务 | 使用入口 | 默认方式 |
+|---|---|---|
+| 通用文章成稿、改写或表达审查 | [Vibe Writing](https://github.com/liukeywill/vibe-writing) | 内部编辑后直接交稿 |
+| 从研究方向逐阶段协作，自己把关关键决定 | [Vibe Research](https://github.com/liukeywill/vibe-research) | 每阶段交付并等待人工核查 |
+| 按确定主题连续推进到完整论文及材料包 | [Auto Paper](https://github.com/liukeywill/auto-paper) | 在实际条件允许范围内连续执行 |
+
+本技能保留研究者的阶段决定权，不会因共享了 Auto Paper 的基础规范而自动跳过核查。八阶段完整任务与人工检查均保留。
 
 ## 快速开始
 
@@ -55,6 +65,14 @@ python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-githu
   --path . \
   --name vibe-research
 ```
+
+## 共用研究基础与版本
+
+与 Auto Paper 共用 [Research Core](https://github.com/liukeywill/research-core)：问题与设计、文献证据、主张审查、记录与追溯。来源统一维护，当前随包版本 **1.0.0**，固定来源提交和逐文件哈希见 [锁文件](shared/research-core.lock.json)。
+
+模块完整内置于 `shared/research-core/`，无需另装 Research Core 或 Auto Paper，无需运行时联网加载。新项目保存模块快照；恢复时以项目原版本为准。研究基础相同，推进方式和项目格式各自保留，尚不支持一键互转项目。
+
+[阶段适配与旧项目处理](references/research-core-adapter.md) · [共用规范](shared/research-core/module.json)
 
 ## 文件与方法来源
 

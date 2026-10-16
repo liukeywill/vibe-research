@@ -27,6 +27,8 @@
 ```json
 {
   "schema_version": 1,
+  "workflow": "vibe-research-human-review",
+  "research_core": {"version": "1.0.0", "source_commit": null, "snapshot": "research-core/"},
   "project_id": "research-project-001",
   "title": "项目名称",
   "updated_at": null,
@@ -46,6 +48,7 @@
 }
 ```
 
+- `workflow` 与 `research_core` 是新项目的附加记录，旧项目可以缺省。实际来源提交从随包锁文件复制，示例 null 表示尚未记录；不能用示例值宣称已冻结。项目快照及锁文件保留并逐项核对哈希，不以版本字符串相同代替内容检查。
 - 时间使用实际可得时间并带时区，无法获取时保留 null，不推测日期。
 - 阶段状态：`not_started`、`in_progress`、`awaiting_human_check`、`accepted`、`advanced_unchecked`、`needs_recheck`。
 - 项目状态：`active`、`paused`、`completed`。只有最终成果交付且用户接受后才记 completed。

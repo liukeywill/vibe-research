@@ -1,0 +1,13 @@
+{
+  "name": "research-core",
+  "version": "1.0.0",
+  "source": "https://github.com/liukeywill/research-core",
+  "source_commit": "229dc7396e11d8374479add877b7ed86d685eb23",
+  "files": {
+    "module.json": "9a1e24d1cd541914b6826db66325d29365c8e9e81178030a4ac6d071f7aa0066",
+    "references/claims-review.md": "7bcf841d8cf014f9058646e6f297d4c15860105656357128cfaf7bdce7fb3f73",
+    "references/evidence.md": "d931bee1e8585ec5b3c45d8902397cf68a7f9a2695c150ad303ed63f0e540b87",
+    "references/question-design.md": "72361b65f80a770b04f99e37c8e1cb521ec7f5f613760fceb688badcdc14fc1f",
+    "references/traceability.md": "c75a853aceb9f93e990c70ce35eeaac6419a321abc4fa207a5f17d6517614fae"
+  }
+}
