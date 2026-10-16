@@ -51,8 +51,9 @@ $vibe-research 继续 /你的项目绝对路径/research-projects/项目名
 
 ```bash
 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py \
-  --repo liukeywill/skills \
-  --path skills/vibe-research
+  --repo liukeywill/vibe-research \
+  --path . \
+  --name vibe-research
 ```
 
 ## 文件与方法来源
