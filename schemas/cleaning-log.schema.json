@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research-workbench.local/schemas/cleaning-log.schema.json",
+  "title": "cleaning-log",
+  "$defs": {
+    "file": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "nonemptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "record_number_definition": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "input_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "output_rows": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule": {
+            "enum": [
+              "exact_duplicates",
+              "missing_selected_numeric"
+            ]
+          },
+          "policy": {
+            "enum": [
+              "drop",
+              "keep",
+              "error",
+              "complete_case"
+            ]
+          },
+          "before": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "after": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "affected_records": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "minItems": 0
+          },
+          "details": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source_record": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "columns": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "source_record",
+                "columns"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0
+          }
+        },
+        "required": [
+          "rule",
+          "policy",
+          "before",
+          "after",
+          "affected_records"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0
+    },
+    "kept_source_records": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1
+      },
+      "minItems": 0
+    },
+    "selected_columns": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "record_number_definition",
+    "input_rows",
+    "output_rows",
+    "rules",
+    "kept_source_records",
+    "selected_columns"
+  ],
+  "additionalProperties": false
+}

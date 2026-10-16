@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research-workbench.local/schemas/evidence-record.schema.json",
+  "title": "evidence-record",
+  "$defs": {
+    "file": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "nonemptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "claim": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "support_status": {
+          "enum": [
+            "supports",
+            "contradicts",
+            "unclear"
+          ]
+        },
+        "claim_verification": {
+          "enum": [
+            "verified",
+            "unverified"
+          ]
+        },
+        "allowed_wording": {
+          "type": "string"
+        },
+        "forbidden_wording": {
+          "type": "string"
+        },
+        "limitations": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "minItems": 0
+            }
+          ]
+        },
+        "quote": {
+          "type": "string"
+        },
+        "verified_at": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "verifier": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "extensions": {
+          "type": "object"
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "source_id",
+        "claim",
+        "locator",
+        "support_status",
+        "claim_verification"
+      ],
+      "additionalProperties": true
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "type": "integer",
+            "const": 1
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "source_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "support_status": {
+            "enum": [
+              "supports",
+              "contradicts",
+              "unclear"
+            ]
+          },
+          "claim_verification": {
+            "enum": [
+              "verified",
+              "unverified"
+            ]
+          },
+          "allowed_wording": {
+            "type": "string"
+          },
+          "forbidden_wording": {
+            "type": "string"
+          },
+          "limitations": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "minItems": 0
+              }
+            ]
+          },
+          "quote": {
+            "type": "string"
+          },
+          "verified_at": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "verifier": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "extensions": {
+            "type": "object"
+          },
+          "reviewer": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "reviewed_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "source_id",
+          "claim",
+          "locator",
+          "support_status",
+          "claim_verification"
+        ],
+        "additionalProperties": true
+      },
+      "minItems": 0
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "python": "python3",
+  "required": [
+    "jsonschema>=4.26,<5"
+  ],
+  "optional_analysis": [
+    "numpy",
+    "pandas",
+    "scipy",
+    "statsmodels"
+  ],
+  "scope": "Use a Python environment with declared dependencies; no model API required."
+}

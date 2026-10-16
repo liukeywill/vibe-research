@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "manuscript",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "paper_type",
+    "abstract",
+    "keywords",
+    "sections",
+    "references"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "paper_type": {
+      "enum": [
+        "integrative_review",
+        "conceptual",
+        "empirical"
+      ]
+    },
+    "abstract": {
+      "type": "string",
+      "minLength": 150
+    },
+    "keywords": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "heading",
+          "role",
+          "paragraphs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "heading": {
+            "type": "string"
+          },
+          "role": {
+            "enum": [
+              "introduction",
+              "methods",
+              "findings",
+              "discussion",
+              "conclusion"
+            ]
+          },
+          "paragraphs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "text",
+                "stance",
+                "source_ids",
+                "claim_ids"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 30
+                },
+                "stance": {
+                  "enum": [
+                    "source_fact",
+                    "interpretation",
+                    "proposal"
+                  ]
+                },
+                "source_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "uniqueItems": true
+                },
+                "claim_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "uniqueItems": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "citation",
+          "url"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "citation": {
+            "type": "string",
+            "minLength": 10
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}

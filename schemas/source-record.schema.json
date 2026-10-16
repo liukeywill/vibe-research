@@ -1,0 +1,331 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research-workbench.local/schemas/source-record.schema.json",
+  "title": "source-record",
+  "$defs": {
+    "file": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "nonemptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "type": "integer",
+          "const": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        },
+        "access_level": {
+          "enum": [
+            "metadata",
+            "abstract",
+            "fulltext"
+          ]
+        },
+        "metadata_status": {
+          "enum": [
+            "verified",
+            "unverified"
+          ]
+        },
+        "doi": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "minItems": 0
+        },
+        "year": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "abstract": {
+          "type": "string"
+        },
+        "verification_scope": {
+          "type": "string"
+        },
+        "eric_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "retrieved_at": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "raw_response": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "local_text": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "fulltext_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        },
+        "license": {
+          "type": "string"
+        },
+        "license_url": {
+          "type": "string",
+          "format": "uri",
+          "minLength": 1
+        },
+        "read_at": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "read_scope": {
+          "type": "string"
+        },
+        "read_status": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "reading_note": {
+          "type": "string"
+        },
+        "source_type": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "extensions": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "url",
+        "access_level",
+        "metadata_status"
+      ],
+      "additionalProperties": true,
+      "description": "Legacy-compatible source records retain extra provider or reading metadata. Extra keys are not promoted into verified evidence."
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "type": "integer",
+            "const": 1
+          },
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 1
+          },
+          "access_level": {
+            "enum": [
+              "metadata",
+              "abstract",
+              "fulltext"
+            ]
+          },
+          "metadata_status": {
+            "enum": [
+              "verified",
+              "unverified"
+            ]
+          },
+          "doi": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "authors": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "minItems": 0
+          },
+          "year": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "provider": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "abstract": {
+            "type": "string"
+          },
+          "verification_scope": {
+            "type": "string"
+          },
+          "eric_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "raw_response": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "local_text": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "fulltext_url": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 1
+          },
+          "license": {
+            "type": "string"
+          },
+          "license_url": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 1
+          },
+          "read_at": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "read_scope": {
+            "type": "string"
+          },
+          "read_status": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "reading_note": {
+            "type": "string"
+          },
+          "source_type": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "extensions": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "url",
+          "access_level",
+          "metadata_status"
+        ],
+        "additionalProperties": true,
+        "description": "Legacy-compatible source records retain extra provider or reading metadata. Extra keys are not promoted into verified evidence."
+      },
+      "minItems": 0
+    }
+  ]
+}

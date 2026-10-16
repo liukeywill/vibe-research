@@ -6,7 +6,7 @@
 
 区分未开始、执行中、计划但未执行、已执行、未核验及实际确认。人工确认必须来自用户原话与对应版本；助手自检、自动继续或工具返回成功不能替代人工决定。
 
-本模块不拥有项目状态机。Vibe Research 使用 project.md／state.json／decisions.md；Auto Paper 使用既有 pipeline、schema、哈希和冻结引擎。两者项目不能通过改文件名或复制 accepted 状态直接互转。
+本模块不拥有项目状态机。Vibe Research 的人工核查模式使用 project.md／state.json／decisions.md；自动成稿模式沿用原 Auto Paper 的 pipeline、schema、哈希和冻结引擎。两者项目不能通过改文件名或复制 accepted 状态直接互转。
 
 ## 恢复与变更
 
@@ -18,7 +18,7 @@
 
 共用规范按 module.json 和随包锁文件记录版本、来源提交及内容哈希。项目采用的版本应可追溯；升级 Skill 不静默升级正在进行的项目。
 
-Vibe Research 为新项目保存本模块及锁文件快照，恢复时以项目已记录版本为准。Auto Paper 为新 structured 项目将模块和锁文件纳入现有 runtime-snapshot／engine-manifest；旧快照没有模块时继续旧规则，不补写“已采用”新版本。
+人工核查模式为新项目保存本模块及锁文件快照，恢复时以项目已记录版本为准。自动成稿模式为新 structured 项目将模块和锁文件纳入现有 runtime-snapshot／engine-manifest；旧快照没有模块时继续旧规则，不补写“已采用”新版本。
 
 ## 范围
 

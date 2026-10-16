@@ -1,4 +1,4 @@
 interface:
-  display_name: "Vibe Research 人工核查科研协作"
-  short_description: "逐阶段推进科研并等待人工核查，共用研究基础规范，保留决定与恢复"
-  default_prompt: "使用 $vibe-research，从我的研究方向开始，采用人工核查模式，逐阶段交付成果并等待我的决定。"
+  display_name: "Vibe Research 统一科研工作流"
+  short_description: "统一研究工作流：默认人工核查，支持自动成稿，保留证据与项目恢复"
+  default_prompt: "使用 $vibe-research，研究方向：【填写方向】，默认按人工核查模式逐阶段推进；需要自动完成论文时我会明确指定自动成稿。"

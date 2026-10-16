@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research-workbench.local/schemas/dataset-spec.schema.json",
+  "title": "dataset-spec",
+  "$defs": {
+    "file": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "nonemptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "minLength": 1
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "unit_of_analysis": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "type": {
+            "enum": [
+              "number",
+              "integer",
+              "string",
+              "boolean"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "required",
+          "description"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "missing_values": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "minItems": 0
+    },
+    "cleaning": {
+      "type": "object",
+      "properties": {
+        "drop_exact_duplicates": {
+          "type": "boolean"
+        },
+        "missing_policy": {
+          "enum": [
+            "complete_case",
+            "error"
+          ]
+        }
+      },
+      "required": [
+        "drop_exact_duplicates",
+        "missing_policy"
+      ],
+      "additionalProperties": false
+    },
+    "delimiter": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "path",
+    "sha256",
+    "source_url",
+    "license",
+    "unit_of_analysis",
+    "columns",
+    "missing_values",
+    "cleaning"
+  ],
+  "additionalProperties": false
+}

@@ -28,7 +28,7 @@
 {
   "schema_version": 1,
   "workflow": "vibe-research-human-review",
-  "research_core": {"version": "1.0.0", "source_commit": null, "snapshot": "research-core/"},
+  "research_core": {"version": "1.1.0", "source_commit": null, "snapshot": "research-core/"},
   "project_id": "research-project-001",
   "title": "项目名称",
   "updated_at": null,

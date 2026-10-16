@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research-workbench.local/schemas/stage-task.schema.json",
+  "title": "stage-task",
+  "$defs": {
+    "file": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "nonemptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "stage": {
+      "enum": [
+        "scope",
+        "search",
+        "read",
+        "synthesize",
+        "design",
+        "analyze",
+        "package",
+        "review"
+      ]
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "succeeded",
+        "failed",
+        "blocked",
+        "stale",
+        "running"
+      ]
+    },
+    "runnable": {
+      "type": "boolean"
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "scope",
+          "search",
+          "read",
+          "synthesize",
+          "design",
+          "analyze",
+          "package",
+          "review"
+        ]
+      },
+      "minItems": 0
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 0
+    },
+    "required_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 0
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 0
+    },
+    "reason": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "retry": {
+      "type": "object",
+      "properties": {
+        "attempt": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "max_attempts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "next_retry_at": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "attempt",
+        "max_attempts",
+        "next_retry_at"
+      ],
+      "additionalProperties": false
+    },
+    "human_decision_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "stage",
+    "status",
+    "runnable",
+    "dependencies",
+    "skills",
+    "required_artifacts",
+    "inputs",
+    "reason",
+    "action",
+    "retry",
+    "human_decision_ids"
+  ],
+  "additionalProperties": false
+}

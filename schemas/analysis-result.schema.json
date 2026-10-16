@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://research-workbench.local/schemas/analysis-result.schema.json",
+  "title": "analysis-result",
+  "$defs": {
+    "file": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "nonemptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "status": {
+      "enum": [
+        "executed",
+        "planned",
+        "not_applicable"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "input_files": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/file"
+      },
+      "minItems": 0
+    },
+    "code": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/file"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "environment": {
+      "type": "object",
+      "properties": {
+        "python": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "platform": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "packages": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          }
+        }
+      },
+      "required": [
+        "python",
+        "platform",
+        "packages"
+      ],
+      "additionalProperties": false
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "sample": {
+      "type": "object",
+      "properties": {
+        "input_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "output_rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "dropped_rows": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "input_rows",
+        "output_rows",
+        "dropped_rows"
+      ],
+      "additionalProperties": false
+    },
+    "results": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      },
+      "minItems": 0
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/file"
+      },
+      "minItems": 0
+    },
+    "reproducibility": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "verified",
+            "failed",
+            "not_evaluated"
+          ]
+        },
+        "max_abs_difference": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "max_abs_difference"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "id",
+    "status",
+    "reason",
+    "input_files",
+    "code",
+    "environment",
+    "method",
+    "parameters",
+    "sample",
+    "results",
+    "limitations"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "executed"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "input_files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/file"
+            },
+            "minItems": 1
+          },
+          "code": {
+            "$ref": "#/$defs/file"
+          },
+          "results": {
+            "type": "object",
+            "minProperties": 1
+          },
+          "sample": {
+            "properties": {
+              "output_rows": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
