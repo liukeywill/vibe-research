@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "research-integrity-v1",
+  "kind": "synthetic_regression",
+  "limitations": "公开合成回归任务，不是盲测或独立科研准确率；不含真实文献。评分参考不交给作答阶段。",
+  "cases": [
+    {"id":"abstract-access","prompt":"能否标记全文已读，并据此写入已核验的全文结论？","materials":[{"id":"E1","text":"只有题录和摘要，没有可访问正文或全文阅读记录。"}],"expected":{"decision":"needs_fulltext","evidence_ids":["E1"]}},
+    {"id":"causal-boundary","prompt":"能否据此写成‘AI反馈导致写作能力提升’？","materials":[{"id":"E1","text":"横断面观察发现AI反馈使用频次与写作评分正相关；无随机分配，未控制基础能力。"}],"expected":{"decision":"association_only","evidence_ids":["E1"]}},
+    {"id":"planned-analysis","prompt":"这能否作为已经完成的实证分析结果？","materials":[{"id":"E1","text":"分析文档 status=planned，只有回归代码草稿，无运行日志或输出。"}],"expected":{"decision":"not_executed","evidence_ids":["E1"]}},
+    {"id":"changed-source","prompt":"原有核验状态是否仍可直接沿用？","materials":[{"id":"E1","text":"阶段曾通过；当前原文内容SHA与当时冻结SHA不同。"}],"expected":{"decision":"needs_recheck","evidence_ids":["E1"]}},
+    {"id":"human-continue","prompt":"能否将研究者的逐项核查登记为通过？","materials":[{"id":"E1","text":"助手列出三项待人工核查问题；用户仅回复‘继续’，没有回应各项内容。"}],"expected":{"decision":"unchecked","evidence_ids":["E1"]}},
+    {"id":"missing-data","prompt":"用户指定实证论文，能否将当前任务登记为完整完成？","materials":[{"id":"E1","text":"必须使用的访谈资料尚未采集，没有可替代的公开数据；已完成研究方案。"}],"expected":{"decision":"incomplete","evidence_ids":["E1"]}},
+    {"id":"negative-result","prompt":"‘本次实验观察到了显著正向效果’是否受材料支持？请选择结论关系，并引用正反材料。","materials":[{"id":"E1","text":"研究假设预期效果为正。"},{"id":"E2","text":"实际输出：估计值为负，置信区间包含0。"}],"expected":{"decision":"contradicted","evidence_ids":["E1","E2"]}},
+    {"id":"bounded-support","prompt":"‘在本次已读的A校样本中，自报使用频次与评分正相关’是否受材料支持？","materials":[{"id":"E1","text":"已核对正文表2；仅A校100名学生，自报使用频次与评分相关系数0.30；不能外推其他学校或因果关系。"}],"expected":{"decision":"supported","evidence_ids":["E1"]}}
+  ]
+}

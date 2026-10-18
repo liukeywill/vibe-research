@@ -71,6 +71,8 @@ def capture(root):
     files=[]
     candidates=[p for p in sorted((base/'scripts').glob('*.py')) if not p.name.startswith('test_')]
     candidates+=sorted((base/'schemas').glob('*.schema.json'))
+    # Fixed regression tasks must travel with the frozen evaluation scripts.
+    candidates+=sorted((base/'assets').glob('research-regression.json'))
     candidates+=foundation_sources
     for source in candidates:
         relative='runtime-snapshot/'+source.relative_to(base).as_posix()

@@ -45,6 +45,8 @@
 6. 修改已登记产物、原文或分析依赖会使相关阶段及后续 stale。从最早失效阶段复核并重新 complete，最后重算质量。不能只修改可编辑的 pass 字段。
 7. review 阶段运行 quality.py --project PROJECT，处理必需指标失败；complete review 按报告的 evaluation_config 保留原策略/独立标注集重算，并核对 evaluation_inputs 的科学输入 SHA。成果包按精确收据纳入这些项目内文件。运行 workspace.py check、pipeline.py status，完成后 export_bundle.py --project PROJECT 生成本地 delivery 包。准确交代 executed、planned、未测和实际交付位置。
 
+阶段交付、恢复与变更后按 [研究看板与改进](research-observability.md) 刷新本地看板；它读取状态，不代替 start/complete。冻结旧项目可由当前安装的看板脚本只读展示，不能将新脚本或评测资产复制进旧 runtime-snapshot。常规研究不自动跑技能回归评测；流程修改和用户要求评测时才执行，保持自动模式原有推进方式。
+
 ## 八阶段产物与方法
 
 路径相对于项目。完整嵌套字段、类型、必填项和约束来自 schemas/*.schema.json；字段汇总见 [schema 规范](schema-reference.md)，不自行用散文代替契约。
@@ -78,3 +80,7 @@
 - 个人资料默认留本地；不读取或修改 sheqing-minyi 身份文件。外发、公开、投稿、付费、定时和外部知识库写入须符合用户当前授权；本地成果包不代表全文可公开分发。
 
 来源、许可、跨仓库选型与适配见 [组件来源](components.md)。中断后说“继续 Vibe Research 自动项目，项目在……”即可按状态恢复。
+
+## 可选跨平台检索
+
+文献检索与补充证据时按需读 [Agent Reach 适配](agent-reach.md)，保留原有阶段推进与核查条件。它补充公开资料发现和原文获取，不自动认证学术论断。

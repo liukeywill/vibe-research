@@ -9,6 +9,20 @@
 
 研究规范与工具在本仓库统一维护，只需安装本技能。公众号、报道、日常文书和普通表达编辑使用 [Vibe Writing](https://github.com/liukeywill/vibe-writing)。
 
+## 研究看板、评测与纠错
+
+仍使用同一个入口，默认人工核查：
+
+```text
+$vibe-research 查看 /项目路径 的研究看板。
+$vibe-research 用固定任务比较候选版本与当前版本。
+$vibe-research 将刚才的错误登记到当前项目，并提出可评测的修改。
+```
+
+研究看板离线展示阶段、未核查项、主张与证据链、文件状态、执行回执和纠错台账。内置八个合成任务用于流程回归；候选须在相同任务与预算下改善且无逐题退步，随后由研究者决定采用。纠错记录保留证据、候选、评测、人工决定及部署内容指纹，不自动修改技能或全局记忆。看板与评分不代表学术正确或人工通过。
+
+[使用步骤与接口](references/research-observability.md)
+
 ## 安装
 
 需要 Python 3、网络连接及 Codex 的 skill-installer：
@@ -97,3 +111,9 @@ $vibe-research 继续 /你的项目绝对路径
 人工工作流依据用户提供的《AI重塑科研-Vibe Research-研究品味》及讨论整理，不分发原 PDF，不宣称官方实现。原 Auto Paper 的组件来源及许可见 [components.md](references/components.md)。本次整合保留这些来源，不为第三方内容重定许可证。
 
 参考文献、数据、运行记录和人工决定不能编造；模拟与计划不作为实证结果。生成成果不自动授权外发、投稿或发布。
+
+## 可选 Agent Reach 检索
+
+可接入 Exa、网页、RSS、GitHub 及实际可用的平台资料，补充文献线索与研究背景。依赖单独安装；不影响基础技能使用。入口、配置边界、原始响应留存与人工核查见 [适配说明](references/agent-reach.md)。
+
+示例：`$vibe-research 人工核查模式；研究方向：AI反馈与大学生写作。阶段2用 Agent Reach 补充公开资料，区分学术证据与讨论线索。`
